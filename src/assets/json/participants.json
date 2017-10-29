@@ -1,3 +1,29 @@
 [
-	{}
+	{
+		"fname": "sergey",
+		"mname": "alex",
+		"lname": "kalinin",
+		"position": "general",
+		"gender": 1,
+		"marrined": false,
+		"city": "n"
+	},
+	{
+		"fname": "ivan",
+		"mname": "ivanovich",
+		"lname": "ivanov",
+		"position": "manager",
+		"gender": 1,
+		"marrined": false,
+		"city": "moscow"
+	},
+	{
+		"fname": "alina",
+		"mname": "petrovna",
+		"lname": "zagagullina",
+		"position": "cofee maker",
+		"gender": 0,
+		"marrined": true,
+		"city": "penza"
+	}
 ]
