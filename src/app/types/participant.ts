@@ -4,6 +4,6 @@ export class Participant {
 	lname: string;
 	position: string;
 	gender: number;
-	marrined: boolean;
+	married: boolean;
 	city: string;
 }

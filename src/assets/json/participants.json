@@ -5,7 +5,7 @@
 		"lname": "kalinin",
 		"position": "general",
 		"gender": 1,
-		"marrined": false,
+		"married": false,
 		"city": "n"
 	},
 	{
@@ -14,7 +14,7 @@
 		"lname": "ivanov",
 		"position": "manager",
 		"gender": 1,
-		"marrined": false,
+		"married": false,
 		"city": "moscow"
 	},
 	{
@@ -23,7 +23,7 @@
 		"lname": "zagagullina",
 		"position": "cofee maker",
 		"gender": 0,
-		"marrined": true,
+		"married": true,
 		"city": "penza"
 	}
 ]
