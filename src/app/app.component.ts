@@ -5,7 +5,6 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Config } from './config';
-import { ParticipantsService } from './services/participants.service';
 import { Participant } from './types/participant';
 
 
@@ -23,9 +22,7 @@ export class AppComponent implements OnInit {
     2: 'android'
   };
   
-  constructor(private participantsService: ParticipantsService,
-              private http: Http) 
-  { 
+  constructor(private http: Http) { 
     this.participants = localStorage.participants ? JSON.parse(localStorage.participants) : [];
     //console.log(this.participants);
   };
@@ -60,5 +57,17 @@ export class AppComponent implements OnInit {
       });
     } 
   };  
+
+  private handlerClick(event): void {   
+    let tagName = event.target.tagName    
+    let elId = (tagName == 'SPAN') ? event.target.parentElement.id : event.target.id;  
+
+    let rowId = elId.split('_')[1];
+    let colId = elId.split('_')[2];
+
+    console.log(elId, rowId, colId);
+
+    prompt('Введите свойство ' + colId + ' для участника с ID=' + rowId);
+  };
 
 }

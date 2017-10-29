@@ -8,7 +8,6 @@ import {  MatButtonModule,
 
 
 import { AppComponent } from './app.component';
-import { ParticipantsService } from './services/participants.service';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { ParticipantsService } from './services/participants.service';
     BrowserModule
   ],
   providers: [
-  	ParticipantsService
   ],
   bootstrap: [AppComponent]
 })
