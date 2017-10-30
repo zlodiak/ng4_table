@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { Http } from '@angular/http';
+import { MatDialog } from '@angular/material';
+
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
 import { Config } from './config';
 import { Participant } from './types/participant';
+//import { PositionComponent } from './modals/position/position.component';
 
 
 @Component({
@@ -22,7 +26,9 @@ export class AppComponent implements OnInit {
     2: 'android'
   };
   
-  constructor(private http: Http) { 
+  constructor(private http: Http, 
+              private matDialog: MatDialog) 
+  { 
     this.participants = localStorage.participants ? JSON.parse(localStorage.participants) : [];
     //console.log(this.participants);
   };
@@ -49,7 +55,8 @@ export class AppComponent implements OnInit {
           participants.push(participantsRaw[prop]);
         }
         
-        this.participants = participants;                                                                                                                           
+        this.participants = participants;  
+        localStorage.participants = JSON.stringify(participants);                                                                                                                         
         console.log('this.participants', this.participants); 
       }, 
       err => {
@@ -67,7 +74,62 @@ export class AppComponent implements OnInit {
 
     console.log(elId, rowId, colId);
 
-    prompt('Введите свойство ' + colId + ' для участника с ID=' + rowId);
+    if(colId == 'id') { 
+      console.log('rettt');
+      return; 
+    }
+
+    //prompt('Введите свойство ' + colId + ' для участника с ID=' + rowId);
+
+    let contentTD = document.getElementById(elId).innerHTML;
+    console.log('contentTD', contentTD);
+
+    if(colId == 'position') {
+      this.matDialog.open(PositionComponent, {
+        width: '400px',
+        data: { title: 'Введите название должности.', position: contentTD, id: rowId }
+      });      
+    }
   };
+
+  public test() {
+    console.log('test');
+    alert('test');
+  };
+
+  public test2() {
+    console.log('test2');
+    alert('test2');
+  };  
+
+  private addParticipant() {
+    this.matDialog.open(DialogOverviewExampleDialog, {
+      width: '400px',
+      data: { title: 'Создание нового участника.', id: 666  }
+    });  
+  };
+
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+  providers: [AppComponent],
+})
+export class DialogOverviewExampleDialog {
+
+  private id_: string = '';
+
+  constructor(
+    private appComponent: AppComponent,
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) private data: any) { 
+    this.id_ = data.id;
+
+    setTimeout(function() {
+      appComponent.test();
+    }, 1000);
+  }
 
 }

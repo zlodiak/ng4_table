@@ -12,7 +12,7 @@
 
 	<tbody class="body" (click)="handlerClick($event)">
 		<tr *ngFor="let p of participants; let i = index;" id="line_{{ p?.id }}">
-			<td class="col-0" id="line_{{ p?.id }}_{{ p?.id }}">{{ p?.id }}</td>
+			<td class="col-0" id="line_{{ p?.id }}_id">{{ p?.id }}</td>
 			<td class="col-names" id="line_{{ p?.id }}_names">
 				<span>{{ p?.fname }}</span>
 				<span>{{ p?.mname }}</span>
@@ -26,6 +26,6 @@
 	</tbody>
 </table>
 
-<button class="btn btn-common" mat-button>
-  Задать вопрос
+<button class="btn btn-common" mat-button (click)="addParticipant()">
+  Добавить нового участника
 </button>
